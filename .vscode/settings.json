@@ -17,7 +17,7 @@
     "typescriptreact"
   ],
   "eslint.workingDirectories": [
-    "./frontend"
+    "./"
   ],
   "files.autoSave": "onFocusChange",
   "typescript.updateImportsOnFileMove.enabled": "always",
