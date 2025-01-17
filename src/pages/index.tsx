@@ -1,3 +1,6 @@
+import Aside from '@/components/Aside/Aside';
+import GenderFilter from '@/components/GenderFilter/GenderFilter';
+import Header from '@/components/Header/Header';
 import Head from 'next/head';
 
 export default function Home() {
@@ -9,7 +12,13 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div></div>
+      <div className="main">
+        <Aside />
+        <div style={{ flex: 1 }}>
+          <Header />
+          <GenderFilter />
+        </div>
+      </div>
     </>
   );
 }
