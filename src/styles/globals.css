@@ -13,7 +13,6 @@ body {
   min-height: 100vh;
   display: flex;
   background-color: black;
-
 }
 
 .cards-container {
@@ -29,5 +28,4 @@ body {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  
 }

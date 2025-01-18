@@ -1,4 +1,4 @@
-function dateFormatter(input: string) {
+const dateFormatter = function (input: string) {
   if (!input) {
     return '';
   }
@@ -38,6 +38,6 @@ function dateFormatter(input: string) {
 
     return match;
   });
-}
+};
 
 export default dateFormatter;

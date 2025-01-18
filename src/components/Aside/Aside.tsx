@@ -4,13 +4,15 @@ import Image from 'next/image';
 import { useDispatch } from 'react-redux';
 import { setCategory } from '@/redux/swapiSlice';
 import { useState } from 'react';
+import { scrollToTop } from '@/helper/scrollToTop/scrollToTop';
 
 function Aside() {
   const dispatch = useDispatch();
   const [selectedCategory, setSelectedCategory] = useState<string>('people');
 
-  const handleCategoryClick = (category: string) => {
+  const handleCategoryClick = async (category: string) => {
     setSelectedCategory(category);
+    await scrollToTop();
     dispatch(setCategory(category));
   };
 

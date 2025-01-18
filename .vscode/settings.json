@@ -7,18 +7,11 @@
     "source.fixAll.eslint": "explicit",
     "source.addMissingImports": "explicit"
   },
-"editor.formatOnSave": true,
+  "editor.formatOnSave": true,
   "javascript.format.enable": false,
   "typescript.format.enable": false,
-  "eslint.validate": [
-    "javascript",
-    "javascriptreact",
-    "typescript",
-    "typescriptreact"
-  ],
-  "eslint.workingDirectories": [
-    "./"
-  ],
+  "eslint.validate": ["javascript", "javascriptreact", "typescript", "typescriptreact"],
+  "eslint.workingDirectories": ["./"],
   "files.autoSave": "onFocusChange",
   "typescript.updateImportsOnFileMove.enabled": "always",
   "typescript.tsserver.log": "verbose",
