@@ -50,3 +50,10 @@ export type Film = {
   edited: string;
   url: string;
 };
+
+export type Data = {
+  count: number;
+  next: string | null;
+  previous: string | null;
+  results: Person[] | Planet[] | Film[];
+};
