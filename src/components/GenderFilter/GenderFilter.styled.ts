@@ -13,5 +13,6 @@ export const StyledGenderFilter = styled.div`
     display: flex;
     align-items: center;
     justify-content: flex-end;
+    height: 100%;
   }
 `;
