@@ -7,6 +7,7 @@ import { SWAPI } from '@/constants/endpoints';
 import { RootState, wrapper } from '@/redux/store';
 import { fetchDataSuccess } from '@/redux/swapiSlice';
 import { useSelector } from 'react-redux';
+import Footer from '@/components/Footer/Footer';
 
 export default function Home() {
   const { data, loading, error } = useSelector((state: RootState) => state.swapi);
@@ -32,6 +33,7 @@ export default function Home() {
               return <Card key={index} {...item} />;
             })}
           </div>
+          <Footer />
         </div>
       </div>
     </>
