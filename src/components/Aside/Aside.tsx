@@ -22,25 +22,25 @@ function Aside() {
         <div className="logo-wrapper">
           <Image src={LOGO} alt="HunterStack Logo" width={50} height={44} priority />
         </div>
-        <p className="catetory-text">Categorias</p>
+        <p className="catetory-text">Categories</p>
         <StyledList>
           <StyledListItem
             onClick={() => handleCategoryClick('people')}
             className={`item ${selectedCategory === 'people' ? 'active' : ''}`}
           >
-            Pessoas
+            People
           </StyledListItem>
           <StyledListItem
             onClick={() => handleCategoryClick('films')}
             className={`item ${selectedCategory === 'films' ? 'active' : ''}`}
           >
-            Filmes
+            Films
           </StyledListItem>
           <StyledListItem
             onClick={() => handleCategoryClick('planets')}
             className={`item ${selectedCategory === 'planets' ? 'active' : ''}`}
           >
-            Planetas
+            Planets
           </StyledListItem>
         </StyledList>
       </div>
