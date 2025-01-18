@@ -57,4 +57,9 @@ export const StyledListItem = styled.li`
     transform: scale(1.03);
     background: #0aa043;
   }
+
+  &.active {
+    background: #3b66c9;
+    border: 1px solid #fff;
+  }
 `;

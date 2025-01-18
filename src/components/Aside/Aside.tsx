@@ -3,11 +3,14 @@ import { StyledAside, StyledList, StyledListItem } from './Aside.styled';
 import Image from 'next/image';
 import { useDispatch } from 'react-redux';
 import { setCategory } from '@/redux/swapiSlice';
+import { useState } from 'react';
 
 function Aside() {
   const dispatch = useDispatch();
+  const [selectedCategory, setSelectedCategory] = useState<string>('people');
 
   const handleCategoryClick = (category: string) => {
+    setSelectedCategory(category);
     dispatch(setCategory(category));
   };
 
@@ -19,9 +22,24 @@ function Aside() {
         </div>
         <p className="catetory-text">Categorias</p>
         <StyledList>
-          <StyledListItem onClick={() => handleCategoryClick('people')}>Pessoas</StyledListItem>
-          <StyledListItem onClick={() => handleCategoryClick('films')}>Filmes</StyledListItem>
-          <StyledListItem onClick={() => handleCategoryClick('planets')}>Planetas</StyledListItem>
+          <StyledListItem
+            onClick={() => handleCategoryClick('people')}
+            className={`item ${selectedCategory === 'people' ? 'active' : ''}`}
+          >
+            Pessoas
+          </StyledListItem>
+          <StyledListItem
+            onClick={() => handleCategoryClick('films')}
+            className={`item ${selectedCategory === 'films' ? 'active' : ''}`}
+          >
+            Filmes
+          </StyledListItem>
+          <StyledListItem
+            onClick={() => handleCategoryClick('planets')}
+            className={`item ${selectedCategory === 'planets' ? 'active' : ''}`}
+          >
+            Planetas
+          </StyledListItem>
         </StyledList>
       </div>
     </StyledAside>
