@@ -17,8 +17,7 @@ body {
 }
 
 .cards-wrapper {
-  margin: 0 auto;
-  margin-top: 100px;
+  margin: 0 auto 100px auto;
   width: auto;
   display: flex;
   justify-content: flex-start;
