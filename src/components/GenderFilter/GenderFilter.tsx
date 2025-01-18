@@ -4,7 +4,9 @@ import { StyledGenderFilter } from './GenderFilter.styled';
 function GenderFilter() {
   return (
     <StyledGenderFilter>
-      <SelectCategory />
+      <div className="container">
+        <SelectCategory />
+      </div>
     </StyledGenderFilter>
   );
 }
