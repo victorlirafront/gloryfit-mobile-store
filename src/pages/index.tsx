@@ -4,20 +4,16 @@ import GenderFilter from '@/components/GenderFilter/GenderFilter';
 import Header from '@/components/Header/Header';
 import Head from 'next/head';
 import { SWAPI } from '@/constants/endpoints';
-import { Film, Person, Planet } from '@/types/swapi';
+import { RootState, wrapper } from '@/redux/store';
+import { fetchDataSuccess } from '@/redux/swapiSlice';
+import { useSelector } from 'react-redux';
 
-type Data = {
-  count: number;
-  next: string | null;
-  previous: string | null;
-  results: Person[] | Planet[] | Film[];
-};
+export default function Home() {
+  const { data, loading, error } = useSelector((state: RootState) => state.swapi);
 
-type HomeProps = {
-  data: Data;
-};
+  if (loading) return <div>Loading...</div>;
+  if (error) return <div>Error: {error}</div>;
 
-export default function Home({ data }: HomeProps) {
   return (
     <>
       <Head>
@@ -32,7 +28,7 @@ export default function Home({ data }: HomeProps) {
           <Header />
           <GenderFilter />
           <div className="cards-wrapper">
-            {data.results.map((item, index) => {
+            {data?.results.map((item, index) => {
               return <Card key={index} {...item} />;
             })}
           </div>
@@ -42,11 +38,16 @@ export default function Home({ data }: HomeProps) {
   );
 }
 
-export async function getServerSideProps() {
-  const response = await fetch(`${SWAPI}/planets`);
-  const data: Data = await response.json();
+export const getServerSideProps = wrapper.getServerSideProps((store) => async () => {
+  try {
+    const response = await fetch(`${SWAPI}/planets`);
+    const data = await response.json();
 
-  return {
-    props: { data },
-  };
-}
+    store.dispatch(fetchDataSuccess(data));
+
+    return { props: {} };
+  } catch (error) {
+    console.error('Error fetching data:', error);
+    return { props: {} };
+  }
+});
