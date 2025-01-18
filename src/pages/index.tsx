@@ -14,12 +14,24 @@ import { Data, Film, Person, Planet } from '@/types/swapi';
 import { LoadingSpinner } from '@/components/UI/LoadingSpinner/LoadingSpinner';
 import { getCategoryTextColor } from '@/helper/getCategoryTextColor/getCategoryTextColor';
 import { createDisplayObject } from '@/helper/createDisplayObject/createDisplayObject';
+import { useEffect, useState } from 'react';
+import { filterData } from '@/helper/filterCurrentData/filterCurrentData';
 
 export default function Home() {
   useSelector((state: RootState) => state.swapi);
   const category = useSelector((state: RootState) => state.swapi.category);
   const { data, loading: fetchLoading, error: fetchError } = useFetchData<Data>(category);
+  const [filteredData, setFilteredData] = useState<(Person | Planet | Film)[] | null>(null);
   const categoryTextColor = getCategoryTextColor(category);
+
+  useEffect(() => {
+    setFilteredData(null);
+  }, [category]);
+
+  function filterCurrentData(selectedFilter: string) {
+    const filteredData = filterData(selectedFilter, category, data);
+    setFilteredData(filteredData);
+  }
 
   return (
     <>
@@ -33,15 +45,14 @@ export default function Home() {
         <Aside />
         <div style={{ flex: 1 }}>
           <Header />
-          <GenderFilter />
+          <GenderFilter onCategoryFilter={filterCurrentData} />
           {fetchLoading && <LoadingSpinner />}
           {fetchError && <p style={{ color: 'red' }}>Error: {fetchError.message}</p>}
           <div className="cards-container">
             <div className="cards-wrapper">
               {!fetchLoading &&
-                data?.results.map((item: Person | Planet | Film, index) => {
+                (filteredData || data?.results).map((item: Person | Planet | Film, index) => {
                   const currentObject = createDisplayObject(category, item);
-
                   return (
                     <Card
                       key={index}

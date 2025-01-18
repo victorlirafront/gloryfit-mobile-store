@@ -1,15 +1,15 @@
 export const FILTERS = {
   people: {
     filterName: 'Gender Filter',
-    options: ['male', 'female'],
+    options: ['male', 'female', 'all'],
   },
   planets: {
-    filterName: 'Planets Filter',
-    options: ['Tatooine', 'Alderaan', 'Hoth'],
+    filterName: 'Climate Filter',
+    options: ['arid', 'temperate', 'frozen', 'all'],
   },
   films: {
     filterName: 'Director Filter',
-    options: ['George Lucas'],
+    options: ['George Lucas', ' Irvin Kershner', 'Richard Marquand', 'all'],
   },
 } as const;
 
