@@ -43,7 +43,7 @@ export default function Home() {
 
 export const getServerSideProps = wrapper.getServerSideProps((store) => async () => {
   try {
-    const response = await axios.get(`${SWAPI}/planets`);
+    const response = await axios.get(`${SWAPI}/people`);
     const data = response.data;
 
     store.dispatch(fetchDataSuccess(data));
