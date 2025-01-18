@@ -42,7 +42,17 @@ export default function Home() {
                 data?.results.map((item: Person | Planet | Film, index) => {
                   const currentObject = createDisplayObject(category, item);
 
-                  return <Card key={index} category={category} textColor={categoryTextColor} />;
+                  console.log(item);
+
+                  return (
+                    <Card
+                      key={index}
+                      category={category}
+                      textColor={categoryTextColor}
+                      info_1={currentObject.info_1}
+                      info_2={currentObject.info_2}
+                    />
+                  );
                 })}
             </div>
           </div>

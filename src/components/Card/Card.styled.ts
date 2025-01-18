@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { STAR_WARS_CARD_IMAGE } from '../../constants/images';
 
 export const StyledCard = styled.div`
-  width: 270px;
+  width: 370px;
   border: 1px solid #3d3d3d;
   margin: 10px;
   border-radius: 4px;
@@ -49,6 +49,7 @@ export const StyledCard = styled.div`
 
     .informations {
       height: 100px;
+      color: #fff;
     }
   }
 
