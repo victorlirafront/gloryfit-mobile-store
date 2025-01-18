@@ -6,12 +6,14 @@ type SwapiState = {
   data: Data | null;
   loading: boolean;
   error: string | null;
+  category: string;
 };
 
 const initialState: SwapiState = {
   data: null,
   loading: false,
   error: null,
+  category: 'people',
 };
 
 const swapiSlice = createSlice({
@@ -22,6 +24,9 @@ const swapiSlice = createSlice({
       state.data = action.payload;
       state.loading = false;
       state.error = null;
+    },
+    setCategory(state, action: PayloadAction<string>) {
+      state.category = action.payload;
     },
   },
   extraReducers: (builder) => {
@@ -34,6 +39,6 @@ const swapiSlice = createSlice({
   },
 });
 
-export const { fetchDataSuccess } = swapiSlice.actions;
+export const { fetchDataSuccess, setCategory } = swapiSlice.actions;
 
 export default swapiSlice.reducer;

@@ -9,12 +9,20 @@ import { fetchDataSuccess } from '@/redux/swapiSlice';
 import { useSelector } from 'react-redux';
 import Footer from '@/components/Footer/Footer';
 import axios from 'axios';
+import { useEffect } from 'react';
+import useFetchData from '@/hooks/useFetchData';
+import { Data } from '@/types/swapi';
 
 export default function Home() {
-  const { data, loading, error } = useSelector((state: RootState) => state.swapi);
+  useSelector((state: RootState) => state.swapi);
+  const category = useSelector((state: RootState) => state.swapi.category);
+  const { data, loading: fetchLoading, error: fetchError } = useFetchData<Data>(category);
 
-  if (loading) return <div>Loading...</div>;
-  if (error) return <div>Error: {error}</div>;
+  useEffect(() => {
+    if (data) {
+      console.log('Data fetched:', data);
+    }
+  }, [data]);
 
   return (
     <>
@@ -29,10 +37,13 @@ export default function Home() {
         <div style={{ flex: 1 }}>
           <Header />
           <GenderFilter />
+          {fetchLoading && <p style={{ color: '#fff' }}>Loading...</p>}
+          {fetchError && <p style={{ color: 'red' }}>Error: {fetchError.message}</p>}
           <div className="cards-wrapper">
-            {data?.results.map((item, index) => {
-              return <Card key={index} {...item} />;
-            })}
+            {!fetchLoading &&
+              data?.results.map((item, index) => {
+                return <Card key={index} {...item} />;
+              })}
           </div>
           <Footer />
         </div>

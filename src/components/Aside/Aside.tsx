@@ -1,26 +1,16 @@
 import { LOGO } from '@/constants/images';
 import { StyledAside, StyledList, StyledListItem } from './Aside.styled';
 import Image from 'next/image';
-import useFetchData from '@/hooks/useFetchData';
-import { fetchDataSuccess } from '@/redux/swapiSlice';
-import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { Data } from '@/types/swapi';
+import { setCategory } from '@/redux/swapiSlice';
 
 function Aside() {
-  const [category, setCategory] = useState<string>('people');
-  const { data } = useFetchData<Data>(category);
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    if (data) {
-      dispatch(fetchDataSuccess(data));
-    }
-  }, [data, dispatch, category]);
-
   const handleCategoryClick = (category: string) => {
-    setCategory(category);
+    dispatch(setCategory(category));
   };
+
   return (
     <StyledAside>
       <div className="aside-container">
