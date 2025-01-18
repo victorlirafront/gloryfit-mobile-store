@@ -8,6 +8,7 @@ import { RootState, wrapper } from '@/redux/store';
 import { fetchDataSuccess } from '@/redux/swapiSlice';
 import { useSelector } from 'react-redux';
 import Footer from '@/components/Footer/Footer';
+import axios from 'axios';
 
 export default function Home() {
   const { data, loading, error } = useSelector((state: RootState) => state.swapi);
@@ -42,8 +43,8 @@ export default function Home() {
 
 export const getServerSideProps = wrapper.getServerSideProps((store) => async () => {
   try {
-    const response = await fetch(`${SWAPI}/planets`);
-    const data = await response.json();
+    const response = await axios.get(`${SWAPI}/planets`);
+    const data = response.data;
 
     store.dispatch(fetchDataSuccess(data));
 
