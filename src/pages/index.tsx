@@ -1,4 +1,5 @@
 import Aside from '@/components/Aside/Aside';
+import Card from '@/components/Card/Card';
 import GenderFilter from '@/components/GenderFilter/GenderFilter';
 import Header from '@/components/Header/Header';
 import Head from 'next/head';
@@ -17,6 +18,17 @@ export default function Home() {
         <div style={{ flex: 1 }}>
           <Header />
           <GenderFilter />
+          <div className="cards-wrapper">
+            <Card />
+            <Card />
+            <Card />
+            <Card />
+            <Card />
+            <Card />
+            <Card />
+            <Card />
+            <Card />
+          </div>
         </div>
       </div>
     </>

@@ -6,10 +6,23 @@
 
 body {
   font-family: Arial, Helvetica, sans-serif;
+  background-color: black;
 }
 
 .main {
   min-height: 100vh;
   display: flex;
   background-color: black;
+
+}
+
+.cards-wrapper {
+  margin: 0 auto;
+  margin-top: 100px;
+  width: auto;
+  display: flex;
+  justify-content: flex-start;
+  max-width: 1200px;
+  flex-wrap: wrap;
+  justify-content: center;
 }
