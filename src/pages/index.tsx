@@ -12,11 +12,13 @@ import axios from 'axios';
 import useFetchData from '@/hooks/useFetchData';
 import { Data } from '@/types/swapi';
 import { LoadingSpinner } from '@/components/UI/LoadingSpinner/LoadingSpinner';
+import { getCategoryTextColor } from '@/helper/getCategoryTextColor/getCategoryTextColor';
 
 export default function Home() {
   useSelector((state: RootState) => state.swapi);
   const category = useSelector((state: RootState) => state.swapi.category);
   const { data, loading: fetchLoading, error: fetchError } = useFetchData<Data>(category);
+  const categoryTextColor = getCategoryTextColor(category);
 
   return (
     <>
@@ -33,11 +35,13 @@ export default function Home() {
           <GenderFilter />
           {fetchLoading && <LoadingSpinner />}
           {fetchError && <p style={{ color: 'red' }}>Error: {fetchError.message}</p>}
-          <div className="cards-wrapper">
-            {!fetchLoading &&
-              data?.results.map((item, index) => {
-                return <Card key={index} category={category} />;
-              })}
+          <div className="cards-container">
+            <div className="cards-wrapper">
+              {!fetchLoading &&
+                data?.results.map((item, index) => {
+                  return <Card key={index} category={category} textColor={categoryTextColor} />;
+                })}
+            </div>
           </div>
           <Footer />
         </div>
