@@ -6,9 +6,14 @@ export const StyledHeader = styled.header`
   width: 100%;
   color: #fff;
   padding: 20px;
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
 `;
 
 export const StyledSearchInput = styled.input.attrs({ type: 'search' })`
