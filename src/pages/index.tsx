@@ -42,8 +42,6 @@ export default function Home() {
                 data?.results.map((item: Person | Planet | Film, index) => {
                   const currentObject = createDisplayObject(category, item);
 
-                  console.log(item);
-
                   return (
                     <Card
                       key={index}
