@@ -9,20 +9,14 @@ import { fetchDataSuccess } from '@/redux/swapiSlice';
 import { useSelector } from 'react-redux';
 import Footer from '@/components/Footer/Footer';
 import axios from 'axios';
-import { useEffect } from 'react';
 import useFetchData from '@/hooks/useFetchData';
 import { Data } from '@/types/swapi';
+import { LoadingSpinner } from '@/components/UI/LoadingSpinner/LoadingSpinner';
 
 export default function Home() {
   useSelector((state: RootState) => state.swapi);
   const category = useSelector((state: RootState) => state.swapi.category);
   const { data, loading: fetchLoading, error: fetchError } = useFetchData<Data>(category);
-
-  useEffect(() => {
-    if (data) {
-      console.log('Data fetched:', data);
-    }
-  }, [data]);
 
   return (
     <>
@@ -37,7 +31,7 @@ export default function Home() {
         <div style={{ flex: 1 }}>
           <Header />
           <GenderFilter />
-          {fetchLoading && <p style={{ color: '#fff' }}>Loading...</p>}
+          {fetchLoading && <LoadingSpinner />}
           {fetchError && <p style={{ color: 'red' }}>Error: {fetchError.message}</p>}
           <div className="cards-wrapper">
             {!fetchLoading &&
