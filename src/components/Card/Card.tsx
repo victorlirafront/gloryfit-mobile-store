@@ -11,6 +11,8 @@ function Card({ category }: CardProps) {
           <p className="post-date">{dateFormatter('2014-12-09T13:50:51.644000Z')}</p>
           <p className="post-category">{category}</p>
         </div>
+        <div className="informations"></div>
+        <button className="button">Visualizar</button>
       </div>
     </StyledCard>
   );

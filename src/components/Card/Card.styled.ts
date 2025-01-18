@@ -3,7 +3,6 @@ import { STAR_WARS_CARD_IMAGE } from '../../constants/images';
 
 export const StyledCard = styled.div`
   width: 270px;
-  height: 400px;
   border: 1px solid #3d3d3d;
   margin: 10px;
   border-radius: 4px;
@@ -23,6 +22,8 @@ export const StyledCard = styled.div`
 
   .body-post {
     padding: 20px;
+    flex: 1;
+    height: 100%;
     .category-wrapper {
       display: flex;
       align-items: center;
@@ -45,5 +46,19 @@ export const StyledCard = styled.div`
         color: rgb(158, 192, 250);
       }
     }
+
+    .informations {
+      height: 100px;
+    }
+  }
+
+  .button {
+    width: 100%;
+    padding: 5px;
+    cursor: pointer;
+    background: #14b04f;
+    color: #fff;
+    border: none;
+    font-weight: bolder;
   }
 `;
