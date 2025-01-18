@@ -6,6 +6,12 @@ export const StyledAside = styled.aside`
   width: 300px;
   border-right: 1px solid #3d3d3d;
   color: #fff;
+  position: relative;
+
+  .aside-container {
+    position: fixed;
+    width: 300px;
+  }
 
   .logo-wrapper {
     height: 100px;

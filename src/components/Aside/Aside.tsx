@@ -5,15 +5,17 @@ import Image from 'next/image';
 function Aside() {
   return (
     <StyledAside>
-      <div className="logo-wrapper">
-        <Image src={LOGO} alt="HunterStack Logo" width={50} height={44} priority />
+      <div className="aside-container">
+        <div className="logo-wrapper">
+          <Image src={LOGO} alt="HunterStack Logo" width={50} height={44} priority />
+        </div>
+        <p className="catetory-text">Categorias</p>
+        <StyledList>
+          <StyledListItem>Pessoas</StyledListItem>
+          <StyledListItem>Filmes</StyledListItem>
+          <StyledListItem>Planetas</StyledListItem>
+        </StyledList>
       </div>
-      <p className="catetory-text">Categorias</p>
-      <StyledList>
-        <StyledListItem>Pessoas</StyledListItem>
-        <StyledListItem>Filmes</StyledListItem>
-        <StyledListItem>Planetas</StyledListItem>
-      </StyledList>
     </StyledAside>
   );
 }
