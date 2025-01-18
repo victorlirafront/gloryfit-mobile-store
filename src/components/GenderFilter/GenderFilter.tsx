@@ -1,11 +1,12 @@
 import SelectCategory from '../SelectCategory/SelectCategory';
 import { StyledGenderFilter } from './GenderFilter.styled';
+import { GenderFilterProps } from './GenderFIlter.types';
 
-function GenderFilter() {
+function GenderFilter(props: GenderFilterProps) {
   return (
     <StyledGenderFilter>
       <div className="container">
-        <SelectCategory />
+        <SelectCategory onCategoryFilter={props.onCategoryFilter} />
       </div>
     </StyledGenderFilter>
   );
