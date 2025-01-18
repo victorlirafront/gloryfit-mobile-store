@@ -3,8 +3,21 @@ import Card from '@/components/Card/Card';
 import GenderFilter from '@/components/GenderFilter/GenderFilter';
 import Header from '@/components/Header/Header';
 import Head from 'next/head';
+import { SWAPI } from '@/constants/endpoints';
+import { Film, Person, Planet } from '@/types/swapi';
 
-export default function Home() {
+type Data = {
+  count: number;
+  next: string | null;
+  previous: string | null;
+  results: Person[] | Planet[] | Film[];
+};
+
+type HomeProps = {
+  data: Data;
+};
+
+export default function Home({ data }: HomeProps) {
   return (
     <>
       <Head>
@@ -19,18 +32,21 @@ export default function Home() {
           <Header />
           <GenderFilter />
           <div className="cards-wrapper">
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-            <Card />
+            {data.results.map((item, index) => {
+              return <Card key={index} {...item} />;
+            })}
           </div>
         </div>
       </div>
     </>
   );
+}
+
+export async function getServerSideProps() {
+  const response = await fetch(`${SWAPI}/planets`);
+  const data: Data = await response.json();
+
+  return {
+    props: { data },
+  };
 }
