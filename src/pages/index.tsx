@@ -10,9 +10,10 @@ import { useSelector } from 'react-redux';
 import Footer from '@/components/Footer/Footer';
 import axios from 'axios';
 import useFetchData from '@/hooks/useFetchData';
-import { Data } from '@/types/swapi';
+import { Data, Film, Person, Planet } from '@/types/swapi';
 import { LoadingSpinner } from '@/components/UI/LoadingSpinner/LoadingSpinner';
 import { getCategoryTextColor } from '@/helper/getCategoryTextColor/getCategoryTextColor';
+import { createDisplayObject } from '@/helper/createDisplayObject/createDisplayObject';
 
 export default function Home() {
   useSelector((state: RootState) => state.swapi);
@@ -38,7 +39,9 @@ export default function Home() {
           <div className="cards-container">
             <div className="cards-wrapper">
               {!fetchLoading &&
-                data?.results.map((item, index) => {
+                data?.results.map((item: Person | Planet | Film, index) => {
+                  const currentObject = createDisplayObject(category, item);
+
                   return <Card key={index} category={category} textColor={categoryTextColor} />;
                 })}
             </div>
