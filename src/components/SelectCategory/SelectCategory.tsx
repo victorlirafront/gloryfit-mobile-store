@@ -2,8 +2,9 @@ import { RootState } from '@/redux/store';
 import { useSelector } from 'react-redux';
 import { StyledSelect, StyledOption } from './SelectCategory.styled';
 import { FILTERS, CategoryKey } from '@/constants/filters';
+import { handleSelectChangeProps } from './SelectCategory.types';
 
-function SelectCategory() {
+function SelectCategory(props: handleSelectChangeProps) {
   const category = useSelector((state: RootState) => state.swapi.category) as CategoryKey;
   const currentFilter = FILTERS[category];
 
@@ -11,8 +12,17 @@ function SelectCategory() {
     return null;
   }
 
+  const handleSelectChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    const selectedValue = String(event.target.value);
+    props.onCategoryFilter(selectedValue);
+  };
+
   return (
-    <StyledSelect name={currentFilter.filterName} id={`${category}-filter`}>
+    <StyledSelect
+      name={currentFilter.filterName}
+      id={`${category}-filter`}
+      onChange={handleSelectChange}
+    >
       <StyledOption value="" disabled selected>
         {currentFilter.filterName}
       </StyledOption>
