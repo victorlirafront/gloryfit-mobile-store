@@ -20,4 +20,30 @@ export const StyledCard = styled.div`
     background-size: cover;
     background-position: center;
   }
+
+  .body-post {
+    padding: 20px;
+    .category-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      margin-bottom: 8px;
+      color: #fff;
+
+      .post-date {
+        text-align: start;
+        width: 100%;
+        font-size: 14px;
+        margin-bottom: 10px;
+        margin-top: 10px;
+      }
+
+      .post-category {
+        font-size: 12px;
+        transition: 0.2s;
+        color: rgb(158, 192, 250);
+      }
+    }
+  }
 `;

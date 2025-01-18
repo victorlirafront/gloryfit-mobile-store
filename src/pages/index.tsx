@@ -36,7 +36,7 @@ export default function Home() {
           <div className="cards-wrapper">
             {!fetchLoading &&
               data?.results.map((item, index) => {
-                return <Card key={index} {...item} />;
+                return <Card key={index} category={category} />;
               })}
           </div>
           <Footer />
