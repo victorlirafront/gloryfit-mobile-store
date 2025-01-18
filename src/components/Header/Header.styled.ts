@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const StyledHeader = styled.header`
   background: #0f0f11;
-  height: 100px;
+  min-height: 100px;
   width: 100%;
   color: #fff;
   padding: 20px;
@@ -14,6 +14,29 @@ export const StyledHeader = styled.header`
     align-items: center;
     justify-content: flex-end;
     height: 100%;
+    flex-direction: column;
+
+    .input-wrapper {
+      ul {
+        list-style: none;
+        position: absolute;
+        z-index: 5;
+        li {
+          border: 1px solid #3d3d3d;
+          text-decoration: none;
+          padding: 10px;
+          border-radius: 4px;
+          cursor: pointer;
+          width: 250px;
+          background: #ccc;
+          color: #000;
+
+          &:hover {
+            background: #ccc;
+          }
+        }
+      }
+    }
   }
 `;
 

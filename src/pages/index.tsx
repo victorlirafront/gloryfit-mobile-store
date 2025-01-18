@@ -16,8 +16,10 @@ import { getCategoryTextColor } from '@/helper/getCategoryTextColor/getCategoryT
 import { createDisplayObject } from '@/helper/createDisplayObject/createDisplayObject';
 import { useEffect, useState } from 'react';
 import { filterData } from '@/helper/filterCurrentData/filterCurrentData';
+import { useDispatch } from 'react-redux';
 
 export default function Home() {
+  const dispatch = useDispatch();
   useSelector((state: RootState) => state.swapi);
   const category = useSelector((state: RootState) => state.swapi.category);
   const { data, loading: fetchLoading, error: fetchError } = useFetchData<Data>(category);
@@ -33,6 +35,11 @@ export default function Home() {
     setFilteredData(filteredData);
   }
 
+  useEffect(() => {
+    if (data) {
+      dispatch(fetchDataSuccess(data));
+    }
+  }, [data, dispatch]);
   return (
     <>
       <Head>
