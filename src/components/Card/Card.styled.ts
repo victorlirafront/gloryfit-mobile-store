@@ -48,8 +48,14 @@ export const StyledCard = styled.div`
     }
 
     .informations {
-      height: 100px;
       color: #fff;
+
+      p {
+        margin-top: 10px;
+        span {
+          color: #d2dd52;
+        }
+      }
     }
   }
 
@@ -61,5 +67,6 @@ export const StyledCard = styled.div`
     color: #fff;
     border: none;
     font-weight: bolder;
+    margin-top: 20px;
   }
 `;

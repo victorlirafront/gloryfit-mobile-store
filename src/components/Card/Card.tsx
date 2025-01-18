@@ -2,7 +2,7 @@ import dateFormatter from '@/helper/dateFormatter/dateFormatter';
 import { StyledCard } from './Card.styled';
 import { CardProps } from './Card.types';
 
-function Card({ category, textColor, info_1, info_2 }: CardProps) {
+function Card({ category, textColor, info_1, info_2, info_3 }: CardProps) {
   return (
     <StyledCard>
       <div className="card-image"></div>
@@ -15,10 +15,13 @@ function Card({ category, textColor, info_1, info_2 }: CardProps) {
         </div>
         <div className="informations">
           <p>
-            <span style={{ color: '#d2dd52' }}>{info_1[0]}</span>: {info_1[1]}
+            <span>{info_1[0]}</span>: {info_1[1]}
           </p>
           <p>
-            <span style={{ color: '#d2dd52' }}>{info_2[0]}</span>: {info_2[1]}
+            <span>{info_2[0]}</span>: {info_2[1]}
+          </p>
+          <p>
+            <span>{info_3[0]}</span>: {info_3[1]}
           </p>
         </div>
         <button className="button">Visualizar</button>

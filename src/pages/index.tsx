@@ -51,6 +51,7 @@ export default function Home() {
                       textColor={categoryTextColor}
                       info_1={currentObject.info_1}
                       info_2={currentObject.info_2}
+                      info_3={currentObject.info_3}
                     />
                   );
                 })}
