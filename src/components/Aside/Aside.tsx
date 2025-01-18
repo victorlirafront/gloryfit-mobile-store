@@ -10,9 +10,9 @@ function Aside() {
   const dispatch = useDispatch();
   const [selectedCategory, setSelectedCategory] = useState<string>('people');
 
-  const handleCategoryClick = async (category: string) => {
+  const handleCategoryClick = (category: string) => {
     setSelectedCategory(category);
-    await scrollToTop();
+    scrollToTop();
     dispatch(setCategory(category));
   };
 
