@@ -72,12 +72,19 @@ export const StyledCard = styled.div`
 
   .button {
     width: 100%;
-    padding: 5px;
+    padding: 10px 10px;
     cursor: pointer;
     background: #14b04f;
     color: #fff;
     border: none;
     font-weight: bolder;
     margin-top: 20px;
+    font-size: 16px;
+    border-radius: 4px;
+    transition: 0.4s;
+
+    &:hover {
+      background: rgb(16, 156, 70);
+    }
   }
 `;
