@@ -36,6 +36,8 @@ Para entender a arquitetura do projeto, é importante entender a estrutura de pa
 
 ```plaintext
    ROOT
+   ├── public
+   │
    ├── src
    │   ├── components
    │   │   ├── ComponentName.tsx
@@ -46,8 +48,9 @@ Para entender a arquitetura do projeto, é importante entender a estrutura de pa
    │   ├── pages
    │   │   ├── pageName
    │   │   │   └── PageName.tsx
-   │   │   │   
+   │   │   │
    │   │   └── index.tsx
+   │   │
    │   ├── constants
    │   │   └── index.ts
    │   │
