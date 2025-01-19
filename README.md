@@ -124,6 +124,8 @@ Watch Usage
 
 Para rodar todos os testes, pressione **a** no terminal.
 
+<img src="https://ik.imagekit.io/Victorliradev/hunterstack/Captura%20de%20Tela%202025-01-19%20a%CC%80s%2011.57.11_mSSWOXtKh.png?updatedAt=1737298669929" width="100%"  />
+
 Certifique-se de que todos os testes foram aprovados, conforme mostrado no exemplo acima.
 
 ## Licença
