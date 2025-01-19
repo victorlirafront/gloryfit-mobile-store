@@ -37,6 +37,10 @@ const Home = () => {
 
   useEffect(() => {
     AOS.init();
+
+    if (window.innerWidth < 768) {
+      setShowAside(false);
+    }
   }, []);
 
   const handleClickedSuggestion = (keyword: string) => {

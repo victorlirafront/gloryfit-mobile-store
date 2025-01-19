@@ -9,6 +9,12 @@ export const StyledAside = styled.aside`
   position: relative;
   transition: 0.4s;
 
+  @media screen and (max-width: 768px) {
+    position: fixed;
+    z-index: 3;
+    padding-top: 100px;
+  }
+
   &.disabled {
     margin-left: -300px;
   }

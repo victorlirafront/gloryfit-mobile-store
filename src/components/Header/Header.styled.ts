@@ -8,10 +8,14 @@ export const StyledHeader = styled.header`
   position: relative;
   z-index: 3;
 
+  @media screen and (max-width: 768px) {
+    position: fixed;
+  }
+
   .aside-controller {
     border-radius: 100%;
     position: absolute;
-    top: 30px;
+    top: 22px;
     cursor: pointer;
     border: 1px solid #fff;
     width: 40px;
