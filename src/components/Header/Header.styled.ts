@@ -22,6 +22,7 @@ export const StyledHeader = styled.header`
       width: 30px;
       height: auto;
       transform: rotate(180deg);
+      cursor: pointer;
 
       &.disabled {
         transform: rotate(0deg);
