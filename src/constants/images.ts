@@ -9,3 +9,6 @@ export const LOADING_SPINNER =
 
 export const ARROW_ICON =
   'https://ik.imagekit.io/Victorliradev/hunterstack/arrow_iro06_wZm.png?updatedAt=1737250679692';
+
+export const BACK_ARROW =
+  'https://ik.imagekit.io/Victorliradev/hunterstack/arrow-back_BbKqLOCqgu.png?updatedAt=1737307338437';

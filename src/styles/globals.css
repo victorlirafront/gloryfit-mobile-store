@@ -4,6 +4,11 @@
   margin: 0;
 }
 
+a {
+  color: #fff;
+  text-decoration: none;
+}
+
 body {
   font-family: Arial, Helvetica, sans-serif;
   background-color: black;
