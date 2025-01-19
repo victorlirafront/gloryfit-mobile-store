@@ -52,10 +52,10 @@ const Home = () => {
       const property = category === 'films' ? 'title' : 'name';
       setFilteredData(
         data.results.filter((item) => {
-          if ('title' in item && property === 'title') {
+          if (property === 'title' && 'title' in item) {
             return item.title === keyword;
           }
-          if ('name' in item && property === 'name') {
+          if (property === 'name' && 'name' in item) {
             return item.name === keyword;
           }
           return false;
@@ -71,10 +71,10 @@ const Home = () => {
   const toggleAside = () => setShowAside((prev) => !prev);
 
   const renderCards = () => {
-    const items = filteredData || data?.results;
+    const items = filteredData ?? data?.results;
     if (!items) return null;
 
-    return items.map((item: Person | Planet | Film, index) => {
+    return items.map((item, index) => {
       const currentObject = createDisplayObject(category, item);
       return (
         <Card

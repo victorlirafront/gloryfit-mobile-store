@@ -17,7 +17,7 @@ module.exports = {
   rules: {
     'no-console': 'warn',
     'no-unused-vars': 'warn',
-    '@typescript-eslint/no-explicit-any': 'off',
+    '@typescript-eslint/no-explicit-any': 'on',
     'prettier/prettier': 'error',
   },
   settings: {
