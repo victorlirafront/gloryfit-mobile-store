@@ -32,7 +32,7 @@ function Card({ category, textColor, info_1, info_2, info_3, info_4, url }: Card
             <span>{info_3[0]}</span>: {info_3[1]}
           </p>
         </div>
-        <button className="button">Visualizar</button>
+        <button className="button">Read More</button>
       </div>
     </StyledCard>
   );
