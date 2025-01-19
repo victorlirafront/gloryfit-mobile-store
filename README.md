@@ -24,15 +24,13 @@ https://hunterstack-challenge.vercel.app/
 - **ESLint**: Ferramenta de linting para identificar e corrigir padrões de código.
 - **Prettier**: Formatação automática de código para garantir consistência.
 
-### Testes Automatizados
+### 🧪 Testes Automatizados
 - **Jest**
 
 
-## Arquitetura
+### 📁 Estrutura de pastas:
 
 Para entender a arquitetura do projeto, é importante entender a estrutura de pastas e a organização dos arquivos.
-
-### Estrutura de pastas:
 
 ```plaintext
    ROOT
