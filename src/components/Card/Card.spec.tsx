@@ -19,6 +19,6 @@ it('should render the category text correctly', () => {
 
 it('should render the "Visualizar" button', () => {
   render(<Card {...mockCardProps} />);
-  const button = screen.getByText(/visualizar/i);
+  const button = screen.getByText(/Read More/i);
   expect(button).toBeInTheDocument();
 });
