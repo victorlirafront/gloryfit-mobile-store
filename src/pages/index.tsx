@@ -18,6 +18,7 @@ import AOS from 'aos';
 import 'aos/dist/aos.css';
 import Pagination from '@/components/Pagination/Pagination';
 import { scrollToTop } from '@/helper/scrollToTop/scrollToTop';
+import { filterData } from '@/helper/filterCurrentData/filterCurrentData';
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -39,7 +40,7 @@ const Home = () => {
       setLoading(false);
       scrollToTop();
     } catch (err) {
-      setError('Erro ao carregar os dados');
+      setError(`Erro ao carregar os dados ${err}`);
       setLoading(false);
     }
   };
@@ -119,7 +120,14 @@ const Home = () => {
             onAsideToggler={toggleAside}
             onClickedSuggestion={handleClickedSuggestion}
           />
-          <GenderFilter onCategoryFilter={(filter) => setFilteredData(null)} />
+          <GenderFilter
+            onCategoryFilter={(filter) => {
+              if (data && data.results) {
+                const response = filterData(filter, category, data);
+                setFilteredData(response);
+              }
+            }}
+          />
           {loading && <LoadingSpinner />}
           {error && <p style={{ color: 'red' }}>Error: {error}</p>}
           <div className="cards-container">
