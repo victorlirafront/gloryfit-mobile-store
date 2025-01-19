@@ -20,10 +20,13 @@ function Header(props: HeaderProps) {
   const [showSuggestions, setShowSuggestions] = useState(true);
 
   useEffect(() => {
-    const property = category === 'films' ? 'title' : 'name';
-    const result = data?.results.map((item) => item[property]);
+    if (data?.results) {
+      const result = data.results.map((item) => {
+        if ('title' in item) return item.title;
+        if ('name' in item) return item.name;
+        return '';
+      });
 
-    if (result) {
       setAllSuggestions(result);
     }
   }, [data, category]);
