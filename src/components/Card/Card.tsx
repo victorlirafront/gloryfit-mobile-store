@@ -4,7 +4,7 @@ import { CardProps } from './Card.types';
 import router from 'next/router';
 import { extractIdFromUrl } from '@/helper/extractIdFromUrl/extractIdFromUrl';
 
-function Card({ category, textColor, info_1, info_2, info_3, info_4, url }: CardProps) {
+function Card({ category, textColor, heading, secondElement, thirdElement, date, url }: CardProps) {
   const routeName = extractIdFromUrl(url);
 
   const handleClick = () => {
@@ -16,20 +16,20 @@ function Card({ category, textColor, info_1, info_2, info_3, info_4, url }: Card
       <div className="card-image"></div>
       <div className="body-post">
         <div className="category-wrapper">
-          <p className="post-date">{dateFormatter(info_4)}</p>
+          <p className="post-date">{dateFormatter(date)}</p>
           <p className="post-category" style={{ color: textColor }}>
             {category}
           </p>
         </div>
         <div className="informations">
           <p>
-            <span>{info_1[0]}</span>: {info_1[1]}
+            <span>{heading[0]}</span>: {heading[1]}
           </p>
           <p>
-            <span>{info_2[0]}</span>: {info_2[1]}
+            <span>{secondElement[0]}</span>: {secondElement[1]}
           </p>
           <p>
-            <span>{info_3[0]}</span>: {info_3[1]}
+            <span>{thirdElement[0]}</span>: {thirdElement[1]}
           </p>
         </div>
         <button className="button">Read More</button>
