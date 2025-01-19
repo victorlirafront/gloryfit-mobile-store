@@ -13,29 +13,11 @@ type HeaderProps = {
 
 function Header(props: HeaderProps) {
   const category = useSelector((state: RootState) => state.swapi.category);
+  const { data } = useSelector((state: RootState) => state.swapi);
   const [searchTerm, setSearchTerm] = useState('');
   const [suggestions, setSuggestions] = useState<string[]>([]);
   const [allSuggestions, setAllSuggestions] = useState<string[]>([]);
   const [showSuggestions, setShowSuggestions] = useState(true);
-  const { data } = useSelector((state: RootState) => state.swapi);
-
-  const fetchSuggestions = (query: string) => {
-    return allSuggestions.filter((suggestion) =>
-      suggestion.toLowerCase().includes(query.toLowerCase()),
-    );
-  };
-
-  useEffect(() => {
-    if (!searchTerm) {
-      props.onClickedSuggestion('reset');
-    }
-
-    if (searchTerm) {
-      setSuggestions(fetchSuggestions(searchTerm));
-    } else {
-      setSuggestions([]);
-    }
-  }, [searchTerm]);
 
   useEffect(() => {
     const property = category === 'films' ? 'title' : 'name';
@@ -46,10 +28,36 @@ function Header(props: HeaderProps) {
     }
   }, [data, category]);
 
+  useEffect(() => {
+    if (!searchTerm) {
+      props.onClickedSuggestion('reset');
+      setSuggestions([]);
+    } else {
+      updateSuggestions(searchTerm);
+    }
+  }, [searchTerm]);
+
+  const updateSuggestions = (query: string) => {
+    const filteredSuggestions = allSuggestions.filter((suggestion) =>
+      suggestion.toLowerCase().includes(query.toLowerCase()),
+    );
+    setSuggestions(filteredSuggestions);
+    setShowSuggestions(filteredSuggestions.length > 0);
+
+    if (filteredSuggestions.length > 0) {
+      props.onClickedSuggestion(filteredSuggestions[0]);
+    } else {
+      props.onClickedSuggestion('reset');
+    }
+  };
+
+  const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchTerm(e.target.value);
+  };
+
   const selectedSuggestion = (e: React.MouseEvent<HTMLLIElement>) => {
-    const element = e.currentTarget.closest('[data-suggestion]') as HTMLElement;
-    if (element?.dataset.suggestion) {
-      const suggestion = element.dataset.suggestion;
+    const suggestion = e.currentTarget.dataset.suggestion;
+    if (suggestion) {
       props.onClickedSuggestion(suggestion);
       setShowSuggestions(false);
     }
@@ -72,19 +80,12 @@ function Header(props: HeaderProps) {
             type="search"
             placeholder={`Search for ${category}`}
             value={searchTerm}
-            onChange={(e) => {
-              setSearchTerm(e.target.value);
-              setShowSuggestions(true);
-            }}
+            onChange={handleSearchChange}
           />
           {showSuggestions && suggestions.length > 0 && (
             <ul>
               {suggestions.map((suggestion, index) => (
-                <li
-                  key={index}
-                  data-suggestion={suggestion}
-                  onClick={(e: React.MouseEvent<HTMLLIElement>) => selectedSuggestion(e)}
-                >
+                <li key={index} data-suggestion={suggestion} onClick={selectedSuggestion}>
                   {suggestion}
                 </li>
               ))}
