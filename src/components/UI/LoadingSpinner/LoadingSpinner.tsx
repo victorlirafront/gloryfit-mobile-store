@@ -4,7 +4,7 @@ import { StyledLoadingSpinner } from './LoadingSpinner.styled';
 
 export function LoadingSpinner() {
   return (
-    <StyledLoadingSpinner>
+    <StyledLoadingSpinner data-aos="fade-up" data-aos-duration="600">
       <Image
         className="loading-spinner"
         alt="loading spinner"
