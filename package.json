@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.5.0",
+    "aos": "^2.3.4",
     "axios": "^1.7.9",
     "next": "15.1.5",
     "next-redux-wrapper": "^8.1.0",
@@ -22,6 +23,7 @@
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
+    "@types/aos": "^3.0.7",
     "@types/jest": "^29.5.14",
     "@types/node": "^20",
     "@types/react": "^19",

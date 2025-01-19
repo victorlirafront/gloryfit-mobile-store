@@ -56,7 +56,7 @@ function Header(props: HeaderProps) {
   };
 
   return (
-    <StyledHeader>
+    <StyledHeader data-aos="fade-up" data-aos-duration="600">
       <div className="aside-controller" onClick={() => props.onAsideToggler()}>
         <Image
           className={props.arrowClassName}

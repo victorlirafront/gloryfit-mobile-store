@@ -20,11 +20,13 @@ function Aside({ className }: AsideProps) {
   return (
     <StyledAside className={className}>
       <div className="aside-container">
-        <div className="logo-wrapper">
+        <div className="logo-wrapper" data-aos="fade-right" data-aos-duration="600">
           <Image src={LOGO} alt="HunterStack Logo" width={50} height={44} priority />
         </div>
-        <p className="catetory-text">Categories</p>
-        <StyledList>
+        <p className="catetory-text" data-aos="fade-right" data-aos-duration="600">
+          Categories
+        </p>
+        <StyledList data-aos="fade-right" data-aos-duration="600">
           <StyledListItem
             onClick={() => handleCategoryClick('people')}
             className={`item ${selectedCategory === 'people' ? 'active' : ''}`}

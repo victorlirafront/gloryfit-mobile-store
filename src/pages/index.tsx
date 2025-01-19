@@ -17,6 +17,8 @@ import { createDisplayObject } from '@/helper/createDisplayObject/createDisplayO
 import { useEffect, useState } from 'react';
 import { filterData } from '@/helper/filterCurrentData/filterCurrentData';
 import { useDispatch } from 'react-redux';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 export default function Home() {
   const dispatch = useDispatch();
@@ -26,6 +28,20 @@ export default function Home() {
   const [filteredData, setFilteredData] = useState<(Person | Planet | Film)[] | null>(null);
   const categoryTextColor = getCategoryTextColor(category);
   const [showAside, setShowAside] = useState(true);
+
+  function clickedSuggestion(keyword: string) {
+    if (keyword === 'reset' && data?.results) {
+      setFilteredData(data?.results);
+    } else if (data?.results) {
+      const property = category === 'films' ? 'title' : 'name';
+      const result = data?.results.filter((item) => item[property] === keyword);
+      setFilteredData(result);
+    }
+  }
+
+  function asideToggler() {
+    setShowAside((prev) => !prev);
+  }
 
   useEffect(() => {
     setFilteredData(null);
@@ -42,19 +58,9 @@ export default function Home() {
     }
   }, [data, dispatch]);
 
-  function clickedSuggestion(keyword: string) {
-    if (keyword === 'reset' && data?.results) {
-      setFilteredData(data?.results);
-    } else if (data?.results) {
-      const property = category === 'films' ? 'title' : 'name';
-      const result = data?.results.filter((item) => item[property] === keyword);
-      setFilteredData(result);
-    }
-  }
-
-  function asideToggler() {
-    setShowAside((prev) => !prev);
-  }
+  useEffect(() => {
+    AOS.init();
+  }, []);
 
   return (
     <>
@@ -76,7 +82,7 @@ export default function Home() {
           {fetchLoading && <LoadingSpinner />}
           {fetchError && <p style={{ color: 'red' }}>Error: {fetchError.message}</p>}
           <div className="cards-container">
-            <div className="cards-wrapper">
+            <div className="cards-wrapper" data-aos="fade-up">
               {!fetchLoading &&
                 (filteredData || data?.results).map((item: Person | Planet | Film, index) => {
                   const currentObject = createDisplayObject(category, item);

@@ -4,7 +4,7 @@ import { GenderFilterProps } from './GenderFIlter.types';
 
 function GenderFilter(props: GenderFilterProps) {
   return (
-    <StyledGenderFilter>
+    <StyledGenderFilter data-aos="fade-up" data-aos-duration="600">
       <div className="container">
         <SelectCategory onCategoryFilter={props.onCategoryFilter} />
       </div>

@@ -2,7 +2,7 @@ import { StyledFooter } from './Footer.styled';
 
 function Footer() {
   return (
-    <StyledFooter>
+    <StyledFooter data-aos="fade-down" data-aos-duration="600">
       <p>Desenvolvido por: Victor Lira</p>
     </StyledFooter>
   );
