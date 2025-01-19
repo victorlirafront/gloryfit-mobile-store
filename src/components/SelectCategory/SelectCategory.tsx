@@ -23,7 +23,7 @@ function SelectCategory(props: handleSelectChangeProps) {
       id={`${category}-filter`}
       onChange={handleSelectChange}
     >
-      <StyledOption value="" disabled selected>
+      <StyledOption disabled selected>
         {currentFilter.filterName}
       </StyledOption>
       {currentFilter.options.map((option) => (

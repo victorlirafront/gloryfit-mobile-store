@@ -4,7 +4,6 @@ import { useState, useEffect } from 'react';
 import { StyledHeader, StyledSearchInput } from './Header.styled';
 import Image from 'next/image';
 import { ARROW_ICON } from '@/constants/images';
-import Link from 'next/link';
 
 type HeaderProps = {
   onClickedSuggestion: (a: string) => void;
@@ -45,7 +44,7 @@ function Header(props: HeaderProps) {
     if (result) {
       setAllSuggestions(result);
     }
-  }, [data]);
+  }, [data, category]);
 
   const selectedSuggestion = (e: React.MouseEvent<HTMLLIElement>) => {
     const element = e.currentTarget.closest('[data-suggestion]') as HTMLElement;

@@ -6,7 +6,7 @@ import Head from 'next/head';
 import { SWAPI } from '@/constants/endpoints';
 import { RootState, wrapper } from '@/redux/store';
 import { fetchDataSuccess } from '@/redux/swapiSlice';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import Footer from '@/components/Footer/Footer';
 import axios from 'axios';
 import useFetchData from '@/hooks/useFetchData';
@@ -16,51 +16,64 @@ import { getCategoryTextColor } from '@/helper/getCategoryTextColor/getCategoryT
 import { createDisplayObject } from '@/helper/createDisplayObject/createDisplayObject';
 import { useEffect, useState } from 'react';
 import { filterData } from '@/helper/filterCurrentData/filterCurrentData';
-import { useDispatch } from 'react-redux';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 
-export default function Home() {
+const Home = () => {
   const dispatch = useDispatch();
-  useSelector((state: RootState) => state.swapi);
   const category = useSelector((state: RootState) => state.swapi.category);
   const { data, loading: fetchLoading, error: fetchError } = useFetchData<Data>(category);
   const [filteredData, setFilteredData] = useState<(Person | Planet | Film)[] | null>(null);
-  const categoryTextColor = getCategoryTextColor(category);
   const [showAside, setShowAside] = useState(true);
-
-  function clickedSuggestion(keyword: string) {
-    if (keyword === 'reset' && data?.results) {
-      setFilteredData(data?.results);
-    } else if (data?.results) {
-      const property = category === 'films' ? 'title' : 'name';
-      const result = data?.results.filter((item) => item[property] === keyword);
-      setFilteredData(result);
-    }
-  }
-
-  function asideToggler() {
-    setShowAside((prev) => !prev);
-  }
+  const categoryTextColor = getCategoryTextColor(category);
 
   useEffect(() => {
     setFilteredData(null);
   }, [category]);
 
-  function filterCurrentData(selectedFilter: string) {
-    const filteredData = filterData(selectedFilter, category, data);
-    setFilteredData(filteredData);
-  }
-
   useEffect(() => {
-    if (data) {
-      dispatch(fetchDataSuccess(data));
-    }
+    if (data) dispatch(fetchDataSuccess(data));
   }, [data, dispatch]);
 
   useEffect(() => {
     AOS.init();
   }, []);
+
+  const handleClickedSuggestion = (keyword: string) => {
+    if (!data?.results) return;
+
+    if (keyword === 'reset') {
+      setFilteredData(data.results);
+    } else {
+      const property = category === 'films' ? 'title' : 'name';
+      setFilteredData(data.results.filter((item) => item[property] === keyword));
+    }
+  };
+
+  const handleFilterData = (selectedFilter: string) => {
+    setFilteredData(filterData(selectedFilter, category, data));
+  };
+
+  const toggleAside = () => setShowAside((prev) => !prev);
+
+  const renderCards = () => {
+    const items = filteredData || data?.results;
+    if (!items) return null;
+
+    return items.map((item: Person | Planet | Film, index) => {
+      const currentObject = createDisplayObject(category, item);
+      return (
+        <Card
+          key={index}
+          category={category}
+          textColor={categoryTextColor}
+          info_1={currentObject.info_1}
+          info_2={currentObject.info_2}
+          info_3={currentObject.info_3}
+        />
+      );
+    });
+  };
 
   return (
     <>
@@ -75,28 +88,15 @@ export default function Home() {
         <div style={{ flex: 1 }}>
           <Header
             arrowClassName={showAside ? '' : 'disabled'}
-            onAsideToggler={asideToggler}
-            onClickedSuggestion={clickedSuggestion}
+            onAsideToggler={toggleAside}
+            onClickedSuggestion={handleClickedSuggestion}
           />
-          <GenderFilter onCategoryFilter={filterCurrentData} />
+          <GenderFilter onCategoryFilter={handleFilterData} />
           {fetchLoading && <LoadingSpinner />}
           {fetchError && <p style={{ color: 'red' }}>Error: {fetchError.message}</p>}
           <div className="cards-container">
             <div className="cards-wrapper" data-aos="fade-up">
-              {!fetchLoading &&
-                (filteredData || data?.results).map((item: Person | Planet | Film, index) => {
-                  const currentObject = createDisplayObject(category, item);
-                  return (
-                    <Card
-                      key={index}
-                      category={category}
-                      textColor={categoryTextColor}
-                      info_1={currentObject.info_1}
-                      info_2={currentObject.info_2}
-                      info_3={currentObject.info_3}
-                    />
-                  );
-                })}
+              {!fetchLoading && renderCards()}
             </div>
           </div>
           <Footer />
@@ -104,18 +104,17 @@ export default function Home() {
       </div>
     </>
   );
-}
+};
 
 export const getServerSideProps = wrapper.getServerSideProps((store) => async () => {
   try {
-    const response = await axios.get(`${SWAPI}/people`);
-    const data = response.data;
-
+    const { data } = await axios.get(`${SWAPI}/people`);
     store.dispatch(fetchDataSuccess(data));
-
     return { props: {} };
   } catch (error) {
     console.error('Error fetching data:', error);
     return { props: {} };
   }
 });
+
+export default Home;
