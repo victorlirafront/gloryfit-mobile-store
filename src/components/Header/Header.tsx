@@ -2,9 +2,13 @@ import { RootState } from '@/redux/store';
 import { useSelector } from 'react-redux';
 import { useState, useEffect } from 'react';
 import { StyledHeader, StyledSearchInput } from './Header.styled';
+import Image from 'next/image';
+import { ARROW_ICON } from '@/constants/images';
 
 type HeaderProps = {
   onClickedSuggestion: (a: string) => void;
+  onAsideToggler: () => void;
+  arrowClassName: string;
 };
 
 function Header(props: HeaderProps) {
@@ -53,6 +57,15 @@ function Header(props: HeaderProps) {
 
   return (
     <StyledHeader>
+      <div className="aside-controller" onClick={() => props.onAsideToggler()}>
+        <Image
+          className={props.arrowClassName}
+          alt="arrow icon"
+          src={ARROW_ICON}
+          width={50}
+          height={50}
+        />
+      </div>
       <div className="container">
         <div className="input-wrapper">
           <StyledSearchInput

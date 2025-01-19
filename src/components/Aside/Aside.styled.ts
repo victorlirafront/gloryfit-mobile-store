@@ -7,6 +7,11 @@ export const StyledAside = styled.aside`
   border-right: 1px solid #3d3d3d;
   color: #fff;
   position: relative;
+  transition: 0.4s;
+
+  &.disabled {
+    margin-left: -300px;
+  }
 
   .aside-container {
     position: fixed;

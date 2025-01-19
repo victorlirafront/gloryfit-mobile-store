@@ -5,8 +5,9 @@ import { useDispatch } from 'react-redux';
 import { setCategory } from '@/redux/swapiSlice';
 import { useState } from 'react';
 import { scrollToTop } from '@/helper/scrollToTop/scrollToTop';
+import { AsideProps } from './Aside.types';
 
-function Aside() {
+function Aside({ className }: AsideProps) {
   const dispatch = useDispatch();
   const [selectedCategory, setSelectedCategory] = useState<string>('people');
 
@@ -17,7 +18,7 @@ function Aside() {
   };
 
   return (
-    <StyledAside>
+    <StyledAside className={className}>
       <div className="aside-container">
         <div className="logo-wrapper">
           <Image src={LOGO} alt="HunterStack Logo" width={50} height={44} priority />

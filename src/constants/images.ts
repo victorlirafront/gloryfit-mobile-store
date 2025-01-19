@@ -6,3 +6,6 @@ export const STAR_WARS_CARD_IMAGE =
 
 export const LOADING_SPINNER =
   'https://ik.imagekit.io/Victorliradev/hunterstack/loading_D4x6gZvVJf.gif?updatedAt=1737209021126';
+
+export const ARROW_ICON =
+  'https://ik.imagekit.io/Victorliradev/hunterstack/arrow_iro06_wZm.png?updatedAt=1737250679692';

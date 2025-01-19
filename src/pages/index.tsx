@@ -25,6 +25,7 @@ export default function Home() {
   const { data, loading: fetchLoading, error: fetchError } = useFetchData<Data>(category);
   const [filteredData, setFilteredData] = useState<(Person | Planet | Film)[] | null>(null);
   const categoryTextColor = getCategoryTextColor(category);
+  const [showAside, setShowAside] = useState(true);
 
   useEffect(() => {
     setFilteredData(null);
@@ -51,6 +52,10 @@ export default function Home() {
     }
   }
 
+  function asideToggler() {
+    setShowAside((prev) => !prev);
+  }
+
   return (
     <>
       <Head>
@@ -60,9 +65,13 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className="main">
-        <Aside />
+        <Aside className={showAside ? '' : 'disabled'} />
         <div style={{ flex: 1 }}>
-          <Header onClickedSuggestion={clickedSuggestion} />
+          <Header
+            arrowClassName={showAside ? '' : 'disabled'}
+            onAsideToggler={asideToggler}
+            onClickedSuggestion={clickedSuggestion}
+          />
           <GenderFilter onCategoryFilter={filterCurrentData} />
           {fetchLoading && <LoadingSpinner />}
           {fetchError && <p style={{ color: 'red' }}>Error: {fetchError.message}</p>}

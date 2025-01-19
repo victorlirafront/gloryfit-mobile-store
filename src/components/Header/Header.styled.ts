@@ -6,6 +6,30 @@ export const StyledHeader = styled.header`
   color: #fff;
   padding: 20px;
 
+  .aside-controller {
+    border-radius: 100%;
+    position: absolute;
+    top: 30px;
+    cursor: pointer;
+    border: 1px solid #fff;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    img {
+      width: 30px;
+      height: auto;
+      transform: rotate(180deg);
+
+      &.disabled {
+        transform: rotate(0deg);
+        margin-left: -5px;
+      }
+    }
+  }
+
   .container {
     max-width: 1140px;
     margin: 0 auto;
