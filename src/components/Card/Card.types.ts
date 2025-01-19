@@ -4,4 +4,5 @@ export type CardProps = {
   info_1: string[];
   info_2: string[];
   info_3: string[];
+  info_4: string;
 };
