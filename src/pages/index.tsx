@@ -65,7 +65,9 @@ const Home = () => {
   };
 
   const handleFilterData = (selectedFilter: string) => {
-    setFilteredData(filterData(selectedFilter, category, data));
+    if (data) {
+      setFilteredData(filterData(selectedFilter, category, data));
+    }
   };
 
   const toggleAside = () => setShowAside((prev) => !prev);
