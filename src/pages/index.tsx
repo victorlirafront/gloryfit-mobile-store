@@ -50,7 +50,17 @@ const Home = () => {
       setFilteredData(data.results);
     } else {
       const property = category === 'films' ? 'title' : 'name';
-      setFilteredData(data.results.filter((item) => item[property] === keyword));
+      setFilteredData(
+        data.results.filter((item) => {
+          if ('title' in item && property === 'title') {
+            return item.title === keyword;
+          }
+          if ('name' in item && property === 'name') {
+            return item.name === keyword;
+          }
+          return false;
+        }),
+      );
     }
   };
 
