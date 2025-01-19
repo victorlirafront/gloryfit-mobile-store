@@ -4,6 +4,8 @@ Criei uma aplicação web de página única (SPA) que consome dados da API públ
 
 ### Deploy da aplicação: 
 
+https://hunterstack-challenge.vercel.app/
+
 <br/>
 
 <br/>
