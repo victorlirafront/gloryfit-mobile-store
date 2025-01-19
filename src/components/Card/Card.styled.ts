@@ -8,7 +8,7 @@ export const StyledCard = styled.div`
   border-radius: 4px;
   transition: 0.2s;
 
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 425px) {
     width: 100%;
   }
 
