@@ -20,10 +20,10 @@ export const StyledSelect = styled.select`
 
 export const StyledOption = styled.option`
   font-size: 16px;
-  background-color: #fff;
-  color: #333;
+  background-color: #333;
+  color: #fff;
 
-  &:hover {
+  &[data-hover='true']:hover {
     background-color: #14b04f;
     color: #fff;
   }
