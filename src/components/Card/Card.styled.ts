@@ -60,6 +60,12 @@ export const StyledCard = styled.div`
         span {
           color: #d2dd52;
         }
+
+        font-size: 16px;
+
+        @media screen and (max-width: 768px) {
+          font-size: 14px;
+        }
       }
     }
   }
