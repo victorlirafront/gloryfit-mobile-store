@@ -7,9 +7,10 @@ Criei uma aplicação web de página única (SPA) que consome dados da API públ
 https://hunterstack-challenge.vercel.app/
 
 <br/>
+<br/>
 
-<br/>
-<br/>
+<img src="https://img.wine.com.br/picasso/2021/40graus/preview.gif" width="100%"  />
+
 <br/>
 <br/>
 
