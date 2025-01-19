@@ -9,39 +9,51 @@ import { fetchDataSuccess } from '@/redux/swapiSlice';
 import { useSelector, useDispatch } from 'react-redux';
 import Footer from '@/components/Footer/Footer';
 import axios from 'axios';
-import useFetchData from '@/hooks/useFetchData';
 import { Data, Film, Person, Planet } from '@/types/swapi';
 import { LoadingSpinner } from '@/components/UI/LoadingSpinner/LoadingSpinner';
 import { getCategoryTextColor } from '@/helper/getCategoryTextColor/getCategoryTextColor';
 import { createDisplayObject } from '@/helper/createDisplayObject/createDisplayObject';
 import { useEffect, useState } from 'react';
-import { filterData } from '@/helper/filterCurrentData/filterCurrentData';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import Pagination from '@/components/Pagination/Pagination';
+import { scrollToTop } from '@/helper/scrollToTop/scrollToTop';
 
 const Home = () => {
   const dispatch = useDispatch();
   const category = useSelector((state: RootState) => state.swapi.category);
-  const { data, loading: fetchLoading, error: fetchError } = useFetchData<Data>(category);
+  const [data, setData] = useState<Data | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
   const [filteredData, setFilteredData] = useState<(Person | Planet | Film)[] | null>(null);
   const [showAside, setShowAside] = useState(true);
   const categoryTextColor = getCategoryTextColor(category);
 
-  useEffect(() => {
-    setFilteredData(null);
-  }, [category]);
+  const fetchData = async (url: string) => {
+    try {
+      setLoading(true);
+      const response = await axios.get<Data>(url);
+      setData(response.data);
+      setFilteredData(null);
+      dispatch(fetchDataSuccess(response.data));
+      setLoading(false);
+      scrollToTop();
+    } catch (err) {
+      setError('Erro ao carregar os dados');
+      setLoading(false);
+    }
+  };
 
   useEffect(() => {
-    if (data) dispatch(fetchDataSuccess(data));
-  }, [data, dispatch]);
-
-  useEffect(() => {
+    fetchData(`${SWAPI}/${category}`);
     AOS.init();
 
     if (window.innerWidth < 768) {
       setShowAside(false);
     }
-  }, []);
+  }, [category]);
+
+  const toggleAside = () => setShowAside((prev) => !prev);
 
   const handleClickedSuggestion = (keyword: string) => {
     if (!data?.results) return;
@@ -64,14 +76,6 @@ const Home = () => {
     }
   };
 
-  const handleFilterData = (selectedFilter: string) => {
-    if (data) {
-      setFilteredData(filterData(selectedFilter, category, data));
-    }
-  };
-
-  const toggleAside = () => setShowAside((prev) => !prev);
-
   const renderCards = () => {
     const items = filteredData ?? data?.results;
     if (!items) return null;
@@ -93,6 +97,12 @@ const Home = () => {
     });
   };
 
+  const renderPagination = () => {
+    if (!data) return null;
+
+    return <Pagination data={data} onFetchData={fetchData} />;
+  };
+
   return (
     <>
       <Head>
@@ -109,14 +119,15 @@ const Home = () => {
             onAsideToggler={toggleAside}
             onClickedSuggestion={handleClickedSuggestion}
           />
-          <GenderFilter onCategoryFilter={handleFilterData} />
-          {fetchLoading && <LoadingSpinner />}
-          {fetchError && <p style={{ color: 'red' }}>Error: {fetchError.message}</p>}
+          <GenderFilter onCategoryFilter={(filter) => setFilteredData(null)} />
+          {loading && <LoadingSpinner />}
+          {error && <p style={{ color: 'red' }}>Error: {error}</p>}
           <div className="cards-container">
             <div className="cards-wrapper" data-aos="fade-up">
-              {!fetchLoading && renderCards()}
+              {!loading && renderCards()}
             </div>
           </div>
+          {renderPagination()}
           <Footer />
         </div>
       </div>
