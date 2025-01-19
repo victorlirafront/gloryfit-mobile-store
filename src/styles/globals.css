@@ -22,7 +22,7 @@ body {
 
 .cards-container {
   max-width: 1200px;
-  min-height: 100vh;
+  min-height: calc(100vh - 560px);
   margin: 0 auto;
 }
 
