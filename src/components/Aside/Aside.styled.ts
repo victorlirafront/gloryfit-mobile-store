@@ -97,12 +97,4 @@ export const StyledListItem = styled.li`
     background: #3b66c9;
     border: 1px solid #fff;
   }
-
-  .circle {
-    width: 10px;
-    height: 10px;
-    background: #fff;
-    margin-right: 10px;
-    border-radius: 100%;
-  }
 `;

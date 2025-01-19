@@ -31,19 +31,19 @@ function Aside({ className }: AsideProps) {
             onClick={() => handleCategoryClick('people')}
             className={`item ${selectedCategory === 'people' ? 'active' : ''}`}
           >
-            <div className="circle"></div> <p>People</p>
+            <p>People</p>
           </StyledListItem>
           <StyledListItem
             onClick={() => handleCategoryClick('films')}
             className={`item ${selectedCategory === 'films' ? 'active' : ''}`}
           >
-            <div className="circle"></div> <p>Films</p>
+            <p>Films</p>
           </StyledListItem>
           <StyledListItem
             onClick={() => handleCategoryClick('planets')}
             className={`item ${selectedCategory === 'planets' ? 'active' : ''}`}
           >
-            <div className="circle"></div> <p>Planets</p>
+            <p>Planets</p>
           </StyledListItem>
         </StyledList>
       </div>
