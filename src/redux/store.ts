@@ -7,7 +7,6 @@ export const makeStore = () =>
     reducer: {
       swapi: swapiReducer,
     },
-    devTools: process.env.NODE_ENV !== 'production',
   });
 
 export const wrapper = createWrapper(makeStore);
