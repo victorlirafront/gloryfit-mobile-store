@@ -40,6 +40,17 @@ export default function Home() {
       dispatch(fetchDataSuccess(data));
     }
   }, [data, dispatch]);
+
+  function clickedSuggestion(keyword: string) {
+    if (keyword === 'reset' && data?.results) {
+      setFilteredData(data?.results);
+    } else if (data?.results) {
+      const property = category === 'films' ? 'title' : 'name';
+      const result = data?.results.filter((item) => item[property] === keyword);
+      setFilteredData(result);
+    }
+  }
+
   return (
     <>
       <Head>
@@ -51,7 +62,7 @@ export default function Home() {
       <div className="main">
         <Aside />
         <div style={{ flex: 1 }}>
-          <Header />
+          <Header onClickedSuggestion={clickedSuggestion} />
           <GenderFilter onCategoryFilter={filterCurrentData} />
           {fetchLoading && <LoadingSpinner />}
           {fetchError && <p style={{ color: 'red' }}>Error: {fetchError.message}</p>}

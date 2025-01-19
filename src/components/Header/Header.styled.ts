@@ -15,6 +15,7 @@ export const StyledHeader = styled.header`
     justify-content: flex-end;
     height: 100%;
     flex-direction: column;
+    align-items: flex-end;
 
     .input-wrapper {
       ul {
@@ -30,9 +31,10 @@ export const StyledHeader = styled.header`
           width: 250px;
           background: #ccc;
           color: #000;
+          opacity: 0.8;
 
           &:hover {
-            background: #ccc;
+            background: #a8a6a6;
           }
         }
       }

@@ -3,11 +3,16 @@ import { useSelector } from 'react-redux';
 import { useState, useEffect } from 'react';
 import { StyledHeader, StyledSearchInput } from './Header.styled';
 
-function Header() {
+type HeaderProps = {
+  onClickedSuggestion: (a: string) => void;
+};
+
+function Header(props: HeaderProps) {
   const category = useSelector((state: RootState) => state.swapi.category);
   const [searchTerm, setSearchTerm] = useState('');
   const [suggestions, setSuggestions] = useState<string[]>([]);
   const [allSuggestions, setAllSuggestions] = useState<string[]>([]);
+  const [showSuggestions, setShowSuggestions] = useState(true);
   const { data } = useSelector((state: RootState) => state.swapi);
 
   const fetchSuggestions = (query: string) => {
@@ -17,6 +22,10 @@ function Header() {
   };
 
   useEffect(() => {
+    if (!searchTerm) {
+      props.onClickedSuggestion('reset');
+    }
+
     if (searchTerm) {
       setSuggestions(fetchSuggestions(searchTerm));
     } else {
@@ -33,6 +42,15 @@ function Header() {
     }
   }, [data]);
 
+  const selectedSuggestion = (e: React.MouseEvent<HTMLLIElement>) => {
+    const element = e.currentTarget.closest('[data-suggestion]') as HTMLElement;
+    if (element?.dataset.suggestion) {
+      const suggestion = element.dataset.suggestion;
+      props.onClickedSuggestion(suggestion);
+      setShowSuggestions(false);
+    }
+  };
+
   return (
     <StyledHeader>
       <div className="container">
@@ -41,12 +59,21 @@ function Header() {
             type="search"
             placeholder={`Search for ${category}`}
             value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
+            onChange={(e) => {
+              setSearchTerm(e.target.value);
+              setShowSuggestions(true);
+            }}
           />
-          {suggestions.length > 0 && (
+          {showSuggestions && suggestions.length > 0 && (
             <ul>
               {suggestions.map((suggestion, index) => (
-                <li key={index}>{suggestion}</li>
+                <li
+                  key={index}
+                  data-suggestion={suggestion}
+                  onClick={(e: React.MouseEvent<HTMLLIElement>) => selectedSuggestion(e)}
+                >
+                  {suggestion}
+                </li>
               ))}
             </ul>
           )}
