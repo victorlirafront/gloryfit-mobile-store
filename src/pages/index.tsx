@@ -19,31 +19,17 @@ import 'aos/dist/aos.css';
 import Pagination from '@/components/Pagination/Pagination';
 import { scrollToTop } from '@/helper/scrollToTop/scrollToTop';
 import { filterData } from '@/helper/filterCurrentData/filterCurrentData';
+import RequestError from '@/components/RequestError/RequestError';
 
 const Home = () => {
   const dispatch = useDispatch();
   const category = useSelector((state: RootState) => state.swapi.category);
   const [data, setData] = useState<Data | null>(null);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<boolean>(false);
   const [filteredData, setFilteredData] = useState<(Person | Planet | Film)[] | null>(null);
   const [showAside, setShowAside] = useState(true);
   const categoryTextColor = getCategoryTextColor(category);
-
-  const fetchData = async (url: string) => {
-    try {
-      scrollToTop();
-      setLoading(true);
-      const response = await axios.get<Data>(url);
-      setData(response.data);
-      setFilteredData(null);
-      dispatch(fetchDataSuccess(response.data));
-      setLoading(false);
-    } catch (err) {
-      setError(`Erro ao carregar os dados ${err}`);
-      setLoading(false);
-    }
-  };
 
   useEffect(() => {
     fetchData(`${SWAPI}/${category}`);
@@ -56,7 +42,7 @@ const Home = () => {
 
   const toggleAside = () => setShowAside((prev) => !prev);
 
-  const handleClickedSuggestion = (keyword: string) => {
+  function handleClickedSuggestion(keyword: string) {
     if (!data?.results) return;
 
     if (keyword === 'reset') {
@@ -75,7 +61,23 @@ const Home = () => {
         }),
       );
     }
-  };
+  }
+
+  async function fetchData(url: string) {
+    try {
+      scrollToTop();
+      setLoading(true);
+      const response = await axios.get<Data>(url);
+      setData(response.data);
+      setFilteredData(null);
+      dispatch(fetchDataSuccess(response.data));
+      setLoading(false);
+    } catch (error) {
+      console.log(error);
+      setError(true);
+      setLoading(false);
+    }
+  }
 
   const renderCards = () => {
     const items = filteredData ?? data?.results;
@@ -130,7 +132,7 @@ const Home = () => {
             }}
           />
           {loading && <LoadingSpinner />}
-          {error && <p style={{ color: 'red' }}>Error: {error}</p>}
+          {error && <RequestError />}
           <div className="cards-container">
             <div className="cards-wrapper" data-aos="fade-up">
               {!loading && renderCards()}

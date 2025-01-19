@@ -46,6 +46,7 @@ export const StyledDynamicInformations = styled.div`
       background-size: cover;
       background-image: url(https://ik.imagekit.io/Victorliradev/hunterstack/wallpaper_9BEWQCkcV.jpg?updatedAt=1737309171555);
       margin-bottom: 30px;
+      border-radius: 6px;
 
       @media screen and (max-width: 425px) {
         height: 200px;
