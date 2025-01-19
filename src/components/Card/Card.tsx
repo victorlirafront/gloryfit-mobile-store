@@ -1,10 +1,18 @@
 import dateFormatter from '@/helper/dateFormatter/dateFormatter';
 import { StyledCard } from './Card.styled';
 import { CardProps } from './Card.types';
+import router from 'next/router';
+import { extractIdFromUrl } from '@/helper/extractIdFromUrl/extractIdFromUrl';
 
-function Card({ category, textColor, info_1, info_2, info_3, info_4 }: CardProps) {
+function Card({ category, textColor, info_1, info_2, info_3, info_4, url }: CardProps) {
+  const routeName = extractIdFromUrl(url);
+
+  const handleClick = () => {
+    router.push(`profile/${routeName}`);
+  };
+
   return (
-    <StyledCard>
+    <StyledCard onClick={handleClick}>
       <div className="card-image"></div>
       <div className="body-post">
         <div className="category-wrapper">
