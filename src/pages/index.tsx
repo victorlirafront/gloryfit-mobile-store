@@ -32,13 +32,13 @@ const Home = () => {
 
   const fetchData = async (url: string) => {
     try {
+      scrollToTop();
       setLoading(true);
       const response = await axios.get<Data>(url);
       setData(response.data);
       setFilteredData(null);
       dispatch(fetchDataSuccess(response.data));
       setLoading(false);
-      scrollToTop();
     } catch (err) {
       setError(`Erro ao carregar os dados ${err}`);
       setLoading(false);
@@ -83,6 +83,7 @@ const Home = () => {
 
     return items.map((item, index) => {
       const currentObject = createDisplayObject(category, item);
+      if (currentObject.date.length < 1) return;
       return (
         <Card
           key={index}

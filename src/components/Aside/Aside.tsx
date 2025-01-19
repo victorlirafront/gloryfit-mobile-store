@@ -12,8 +12,8 @@ function Aside({ className }: AsideProps) {
   const [selectedCategory, setSelectedCategory] = useState<string>('people');
 
   const handleCategoryClick = (category: string) => {
-    setSelectedCategory(category);
     scrollToTop();
+    setSelectedCategory(category);
     dispatch(setCategory(category));
   };
 
