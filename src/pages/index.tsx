@@ -31,15 +31,6 @@ const Home = () => {
   const [showAside, setShowAside] = useState(true);
   const categoryTextColor = getCategoryTextColor(category);
 
-  useEffect(() => {
-    fetchData(`${SWAPI}/${category}`);
-    AOS.init();
-
-    if (window.innerWidth < 768) {
-      setShowAside(false);
-    }
-  }, [category]);
-
   const toggleAside = () => setShowAside((prev) => !prev);
 
   function handleClickedSuggestion(keyword: string) {
@@ -106,6 +97,15 @@ const Home = () => {
 
     return <Pagination data={data} onFetchData={fetchData} />;
   };
+
+  useEffect(() => {
+    fetchData(`${SWAPI}/${category}`);
+    AOS.init();
+
+    if (window.innerWidth < 768) {
+      setShowAside(false);
+    }
+  }, [category]);
 
   return (
     <>
