@@ -12,7 +12,8 @@ export const StyledAside = styled.aside`
   @media screen and (max-width: 768px) {
     position: fixed;
     z-index: 3;
-    padding-top: 100px;
+    margin-top: 79px;
+    border-top: 2px solid #3d3d3d;
   }
 
   &.disabled {
@@ -30,12 +31,20 @@ export const StyledAside = styled.aside`
     align-items: center;
     justify-content: flex-start;
     padding: 20px 30px;
+    @media screen and (max-width: 425px) {
+      padding: 20px;
+    }
   }
 
   .catetory-text {
     padding: 0 47px;
     font-size: 14px;
     margin: 30px 0 20px 0;
+    @media screen and (max-width: 425px) {
+      padding: 16px 0 16px 38px;
+      margin: 0;
+      margin-left: 20px;
+    }
   }
 `;
 
@@ -45,6 +54,10 @@ export const StyledList = styled.ul`
   margin: 0;
   font-size: 18px;
   color: #333;
+  @media screen and (max-width: 425px) {
+    width: 200px;
+    padding-left: 20px;
+  }
 `;
 
 export const StyledListItem = styled.li`
@@ -64,6 +77,15 @@ export const StyledListItem = styled.li`
   font-weight: bolder;
   display: flex;
   align-items: center;
+
+  @media screen and (max-width: 768px) {
+    font-size: 14px;
+    padding: 10px 20px;
+  }
+
+  @media screen and (max-width: 425px) {
+    width: 200px;
+  }
 
   &:hover {
     border: 1px solid #0aa043;
