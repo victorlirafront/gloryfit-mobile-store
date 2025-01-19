@@ -64,10 +64,10 @@ Para entender a arquitetura do projeto, é importante entender a estrutura de pa
    │   │   └── global.ts
    │   │
    │   ├── hooks
-   │   │   ├── useHookName
-   │   │   │   ├── useHookName.ts
-   │   │   │   ├── useHookName.spec.ts
-   │   │   │   └── useHookName.types.ts
+   │   │   └── useHookName
+   │   │       ├── useHookName.ts
+   │   │       ├── useHookName.spec.ts
+   │   │       └── useHookName.types.ts
    │   │
    │   ├── redux
    │   │   ├── store.ts
