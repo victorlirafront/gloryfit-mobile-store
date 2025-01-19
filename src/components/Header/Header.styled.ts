@@ -5,6 +5,8 @@ export const StyledHeader = styled.header`
   width: 100%;
   color: #fff;
   padding: 20px;
+  position: relative;
+  z-index: 3;
 
   .aside-controller {
     border-radius: 100%;
@@ -45,7 +47,6 @@ export const StyledHeader = styled.header`
       ul {
         list-style: none;
         position: absolute;
-        z-index: 5;
         li {
           border: 1px solid #3d3d3d;
           text-decoration: none;
