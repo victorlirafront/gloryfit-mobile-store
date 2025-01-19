@@ -47,7 +47,7 @@ Para entender a arquitetura do projeto, é importante entender a estrutura de pa
    │   │
    │   ├── pages
    │   │   ├── pageName
-   │   │   │   └── PageName.tsx
+   │   │   │   └── pageName.tsx
    │   │   │
    │   │   └── index.tsx
    │   │
