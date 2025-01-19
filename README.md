@@ -68,6 +68,10 @@ Para entender a arquitetura do projeto, é importante entender a estrutura de pa
    │   │   │   ├── useHookName.ts
    │   │   │   ├── useHookName.spec.ts
    │   │   │   └── useHookName.types.ts
+   │   │
+   │   ├── redux
+   │   │   ├── store.ts
+   │   │   └── slice.ts
 
 ```
 
