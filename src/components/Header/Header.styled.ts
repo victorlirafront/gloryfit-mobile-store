@@ -65,6 +65,10 @@ export const StyledHeader = styled.header`
           &:hover {
             background: #a8a6a6;
           }
+
+          @media screen and (max-width: 768px) {
+            font-size: 14px;
+          }
         }
       }
     }
@@ -82,6 +86,9 @@ export const StyledSearchInput = styled.input.attrs({ type: 'search' })`
   color: #fff;
   transition: all 0.3s ease;
   display: flex;
+  @media screen and (max-width: 768px) {
+    font-size: 14px;
+  }
 
   &:focus {
     border: 2px solid #14b04f;
@@ -91,5 +98,8 @@ export const StyledSearchInput = styled.input.attrs({ type: 'search' })`
   &::placeholder {
     color: #fff;
     font-style: italic;
+    @media screen and (max-width: 768px) {
+      font-size: 14px;
+    }
   }
 `;
