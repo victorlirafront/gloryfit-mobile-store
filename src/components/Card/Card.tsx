@@ -8,7 +8,7 @@ function Card({ category, textColor, info_1, info_2, info_3, info_4, url }: Card
   const routeName = extractIdFromUrl(url);
 
   const handleClick = () => {
-    router.push(`profile/${routeName}`);
+    router.push(`profile/${routeName}?category=${category}`);
   };
 
   return (

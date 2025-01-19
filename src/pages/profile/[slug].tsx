@@ -61,16 +61,15 @@ const Profile = ({ data }: ProfileProps) => {
 };
 
 export const getServerSideProps: GetServerSideProps = wrapper.getServerSideProps(
-  (store) => async (context) => {
+  () => async (context) => {
     const { slug } = context.params || {};
+    const { category } = context.query || {};
 
     if (!slug) {
       return {
         notFound: true,
       };
     }
-
-    const category = store.getState().swapi.category;
 
     try {
       const { data } = await axios.get(`${SWAPI}/${category}/${slug}/`);
