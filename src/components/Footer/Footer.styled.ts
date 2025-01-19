@@ -7,4 +7,9 @@ export const StyledFooter = styled.footer`
   display: flex;
   align-items: center;
   justify-content: center;
+  font-size: 16px;
+
+  @media screen and (max-width: 425px) {
+    font-size: 14px;
+  }
 `;
