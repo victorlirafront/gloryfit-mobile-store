@@ -83,10 +83,10 @@ const Home = () => {
           key={index}
           category={category}
           textColor={categoryTextColor}
-          info_1={currentObject.info_1}
-          info_2={currentObject.info_2}
-          info_3={currentObject.info_3}
-          info_4={currentObject.info_4}
+          heading={currentObject.heading}
+          secondElement={currentObject.secondElement}
+          thirdElement={currentObject.thirdElement}
+          date={currentObject.date}
           url={currentObject.url}
         />
       );
