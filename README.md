@@ -76,7 +76,7 @@ Para entender a arquitetura do projeto, é importante entender a estrutura de pa
 ```
 
 ## 🚀 Funcionalidades criadas
-   - Barra de pesquisa com autocompletar e sugestões
+   - Barra de pesquisa com sugestões
    - Paginação
    - Filtro
    - Exibição do conteúdo
