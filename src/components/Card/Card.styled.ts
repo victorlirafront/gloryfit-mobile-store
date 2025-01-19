@@ -52,6 +52,7 @@ export const StyledCard = styled.div`
 
       p {
         margin-top: 10px;
+        line-height: 22px;
         span {
           color: #d2dd52;
         }
