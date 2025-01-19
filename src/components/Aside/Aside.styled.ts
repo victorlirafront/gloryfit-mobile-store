@@ -51,6 +51,8 @@ export const StyledListItem = styled.li`
   transition: 0.2s;
   color: #fff;
   font-weight: bolder;
+  display: flex;
+  align-items: center;
 
   &:hover {
     border: 1px solid #0aa043;
@@ -61,5 +63,13 @@ export const StyledListItem = styled.li`
   &.active {
     background: #3b66c9;
     border: 1px solid #fff;
+  }
+
+  .circle {
+    width: 10px;
+    height: 10px;
+    background: #fff;
+    margin-right: 10px;
+    border-radius: 100%;
   }
 `;
