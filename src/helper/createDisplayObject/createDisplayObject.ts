@@ -1,4 +1,5 @@
 import { Person, Planet, Film } from '@/types/swapi';
+import { truncateText } from '../truncateText/truncateText';
 
 interface DisplayObject {
   info_1: [string, string];
@@ -24,7 +25,7 @@ export function createDisplayObject(category: string, item: Person | Planet | Fi
   } else if (category === 'films' && 'title' && 'director' && 'opening_crawl' in item) {
     displayObject.info_1 = ['Title', item.title];
     displayObject.info_2 = ['Director', item.director];
-    displayObject.info_3 = ['Opening Crawl', item.opening_crawl];
+    displayObject.info_3 = ['Opening Crawl', truncateText(item.opening_crawl)];
   }
 
   return displayObject;
