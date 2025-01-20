@@ -75,6 +75,15 @@ Para entender a arquitetura do projeto, é importante entender a estrutura de pa
 
 ```
 
+## 🚀 Funcionalidades criadas
+   - Barra de pesquisa com sugestões
+   - Paginação
+   - Filtro
+   - Exibição do conteúdo
+   - Páginas dinâmicas para cada item
+   - Responsividade
+   - Prevenção de erros
+
 ## 🚀 Executando o Projeto Localmente
 
 ### 1. Clone o Repositório
