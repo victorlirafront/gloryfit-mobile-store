@@ -34,14 +34,16 @@ Para entender a arquitetura do projeto, é importante entender a estrutura de pa
 
 ```plaintext
    ROOT
+   │
    ├── public
    │
    ├── src
    │   ├── components
-   │   │   ├── ComponentName.tsx
-   │   │   ├── ComponentName.spec.tsx
-   │   │   ├── ComponentName.types.ts
-   │   │   └── ComponentName.styled.ts
+   │   │   ├── ComponentName
+   │   │   │   ├── ComponentName.tsx
+   │   │   │   ├── ComponentName.spec.tsx
+   │   │   │   ├── ComponentName.types.ts
+   │   │   │   └── ComponentName.styled.ts
    │   │
    │   ├── pages
    │   │   ├── pageName
