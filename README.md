@@ -1,6 +1,6 @@
 # 🌐 Star Wars: Aplicação Web
 
-Aplicação web de página única (SPA) que consome dados da API pública SWAPI (Star Wars API). Utilizando NextJS com Server-Side Rendering (SSR), a aplicação gera páginas dinâmicas e permite aos usuários buscar e filtrar itens como personagens, filmes, planetas e outros recursos do universo Star Wars de forma rápida e intuitiva. A busca instantânea com autocomplete e filtros relevantes facilita a navegação. A interface é responsiva e se adapta a diferentes tamanhos de tela, garantindo uma boa experiência em dispositivos móveis e desktops. Desenvolvi o projeto com React, NextJS, TypeScript, Styled-components e Redux para o gerenciamento de estado, focando na organização do código e na acessibilidade. A aplicação foi projetada para ser simples, mas eficiente, com navegação fluida e fácil de usar.
+SPA que consome a SWAPI (Star Wars API) com Next.js e SSR, permitindo busca e filtro de personagens, filmes, planetas e mais. Conta com busca instantânea, paginação, interface responsiva e navegação intuitiva. Desenvolvida com Next, TypeScript, Styled-components e Redux, foca na organização do código, acessibilidade e boa experiência em qualquer dispositivo.
 
 ### Deploy da aplicação: 
 
