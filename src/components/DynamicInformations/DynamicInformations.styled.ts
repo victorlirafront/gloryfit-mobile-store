@@ -1,3 +1,4 @@
+import { LANDSCAPE } from '@/constants/images';
 import styled from 'styled-components';
 
 export const StyledDynamicInformationsWrapper = styled.div`
@@ -44,7 +45,7 @@ export const StyledDynamicInformations = styled.div`
       background-position: center;
       background-repeat: no-repeat;
       background-size: cover;
-      background-image: url(https://ik.imagekit.io/Victorliradev/hunterstack/wallpaper_9BEWQCkcV.jpg?updatedAt=1737309171555);
+      background-image: url(${LANDSCAPE});
       margin-bottom: 30px;
       border-radius: 6px;
 

@@ -12,3 +12,6 @@ export const ARROW_ICON =
 
 export const BACK_ARROW =
   'https://ik.imagekit.io/Victorliradev/hunterstack/arrow-back_BbKqLOCqgu.png?updatedAt=1737307338437';
+
+export const LANDSCAPE =
+  'https://ik.imagekit.io/Victorliradev/hunterstack/wallpaper_9BEWQCkcV.jpg?updatedAt=1737309171555';
