@@ -89,13 +89,13 @@ Para entender a arquitetura do projeto, é importante entender a estrutura de pa
 ### 1. Clone o Repositório
 
 ```bash
-git clone https://github.com/victorlirafront/hunterstack-challenge.git
+git clone https://github.com/victorlirafront/hs-challenge.git
 ```
 
 ### 2. Entre no Projeto
 
 ```bash
-cd hunterstack-challenge
+cd hs-challenge
 ```
 
 1. **Instale as dependências**:
