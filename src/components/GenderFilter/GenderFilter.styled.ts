@@ -9,7 +9,7 @@ export const StyledGenderFilter = styled.div`
   padding: 20px;
 
   .container {
-    max-width: 1140px;
+    max-width: 1030px;
     margin: 0 auto;
     display: flex;
     align-items: center;
