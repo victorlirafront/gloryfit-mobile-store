@@ -1,7 +1,8 @@
-import { View } from "react-native";
+import React from 'react';
+import { View } from 'react-native';
 
-function Header(){
-  return <View>Header</View>
+function Header() {
+  return <View>Header</View>;
 }
 
-export default Header
+export default Header;
