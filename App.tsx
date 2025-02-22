@@ -1,12 +1,16 @@
 import { StatusBar } from 'expo-status-bar';
+import { ReactElement } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import BaseLayout from './src/BaseLayout/BaseLayout';
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <BaseLayout>
+      <View style={styles.container}>
+        <Text>Open up App</Text>
+        <StatusBar style="auto" />
+      </View>
+    </BaseLayout>
   );
 }
 
