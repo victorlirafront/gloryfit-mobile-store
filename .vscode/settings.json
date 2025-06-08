@@ -1,11 +1,12 @@
 {
   "editor.tabSize": 2,
   "editor.fontSize": 12,
-  "terminal.integrated.fontSize": 12,
+  "terminal.integrated.fontSize": 14,
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": "explicit",
     "source.addMissingImports": "explicit"
   },
+  "editor.formatOnSave": true,
   "javascript.format.enable": false,
   "typescript.format.enable": false,
   "eslint.validate": [
@@ -14,9 +15,9 @@
     "typescript",
     "typescriptreact"
   ],
-"eslint.workingDirectories": [
-  "."
-],
+  "eslint.workingDirectories": [
+    "." // Adjust the path based on your project structure
+  ],
   "files.autoSave": "onFocusChange",
   "typescript.updateImportsOnFileMove.enabled": "always",
   "typescript.tsserver.log": "verbose",

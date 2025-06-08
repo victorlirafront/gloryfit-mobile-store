@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, StatusBar} from 'react-native';
+import { StyleSheet, Text, View, StatusBar } from 'react-native';
 import BaseLayout from './src/BaseLayout/BaseLayout';
 
 export default function App() {
@@ -7,7 +7,7 @@ export default function App() {
     <BaseLayout>
       <View style={styles.container}>
         <Text>Open up App</Text>
-      <StatusBar barStyle="light-content" />
+        <StatusBar barStyle="light-content" />
       </View>
     </BaseLayout>
   );
