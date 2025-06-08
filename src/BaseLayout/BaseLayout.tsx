@@ -1,5 +1,7 @@
 import React, { ReactNode } from 'react';
-import { View, Text, StyleSheet, SafeAreaView, ScrollView } from 'react-native';
+import {  StyleSheet, SafeAreaView, ScrollView } from 'react-native';
+import Header from '../components/Header/Header';
+import Footer from '../components/Footer/Footer';
 
 interface BaseLayoutProps {
   children: ReactNode;
@@ -8,15 +10,11 @@ interface BaseLayoutProps {
 const BaseLayout: React.FC<BaseLayoutProps> = ({ children }) => {
   return (
     <SafeAreaView style={styles.container}>
-      <View style={styles.header}>
-        <Text style={styles.headerText}>Header</Text>
-      </View>
+      <Header/>
       <ScrollView style={styles.content}>
         {children}
       </ScrollView>
-      <View style={styles.footer}>
-        <Text style={styles.footerText}>Footer</Text>
-      </View>
+       <Footer/>
     </SafeAreaView>
   );
 };
